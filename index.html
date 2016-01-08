@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Att göra-lista</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" media="screen" href="css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <main class="container row row-centered">
+      <h1 class="col-md-12">Att göra-lista</h1>
+
+      <section class="add col-md-12">
+        <h2>Lägg till en ny aktivitet</h2>
+        <input id="new-activity">
+        <button id="activity-button">Lägg till</button>
+        <p class="error-message">Fältet får inte vara tomt.</p>
+      </section>
+
+      <section class="todo col-md-6">
+        <h2>Att göra</h2>
+        <ul id="todo-list">
+        </ul>
+      </section>
+
+      <section class="finished col-md-6">
+        <h2>Klart</h2>
+        <ul id="finished-list">
+        </ul>
+      </section>
+
+    </main>
+    <script src="js/todo.js"></script>
+  </body>
+</html>
