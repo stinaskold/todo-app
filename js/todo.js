@@ -106,9 +106,11 @@ function addTask(newActivity) {
   // Append error-message
   listElement.appendChild(errorMessage);
 
+
   // Add event listeners to buttons
   changeButton.addEventListener("click", function() {
-    changeTask(this, finishButton, newActivity);
+    var inputValue = this.parentNode.firstChild.innerHTML;
+    changeTask(this, finishButton, inputValue);
   });
 
   finishButton.addEventListener("click", function() {
@@ -127,10 +129,9 @@ function addTask(newActivity) {
 
 // Change content of task
 function changeTask(changeButton, finishButton, inputValue) {
-
   // Create input element
   var input = document.createElement("input");
-  input.value = inputValue;
+  input.setAttribute("value", inputValue);
 
   var listElement = changeButton.parentNode;
 
@@ -144,24 +145,31 @@ function changeTask(changeButton, finishButton, inputValue) {
   changeButton.disabled = true;
   finishButton.disabled = true;
 
+  var saveButton = createButton("save", "Spara");
+
+  listElement.replaceChild(saveButton, changeButton);
+
   input.focus();
 
-  input.addEventListener("focusout", function() {
-    if (this.value === "") {
+  saveButton.addEventListener("click", function() {
+    if (input.value === "") {
       showErrorMessage(input);
       return;
     }
     // Create paragraph
-    var newParagraph = document.createElement("p")
+    var newParagraph = document.createElement("p");
     // Set paragraph innerhtml to input from user
-    newParagraph.innerHTML = this.value;
+    newParagraph.innerHTML = input.value;
     // Replace input with new paragraph
-    listElement.replaceChild(newParagraph, input);
+    listElement.replaceChild(newParagraph, listElement.firstChild);
+    // Replace changeButton with saveButton
+    listElement.replaceChild(changeButton, saveButton);
     changeButton.disabled = false;
     finishButton.disabled = false;
     saveTasks(toDoList);
     saveTasks(finishedList);
   });
+
 }
 
   // Move task to finished-list

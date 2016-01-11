@@ -86,7 +86,7 @@ button:disabled {
   background-color: #ddd;
 }
 
-button.change {
+button.change, button.save {
   background-color: lightblue;
 }
 
